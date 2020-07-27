@@ -10,7 +10,7 @@ roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_R serial_no:=938
 \
 todo: custom launch files based on rs_aligned_depth.launch with <arg name="enable_pointcloud"   default="true"/> \
 \
-python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_R_link -0.07713135 -0.13010438 -0.01722759 -50 2.8649545 2.5538075 \
-python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_R_link -0.07713135 0.13010438 -0.01722759 50 2.8649545 2.5538075 \
+python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_R_link -0.07713135 -0.13010438 -0.01722759 -50.6754716 2.8649545 2.5538075 \
+python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_R_link -0.07713135 0.13010438 -0.01722759 50.6754716 2.8649545 2.5538075 \
 \
 3x3 rotation matrix (part of 4x4 transform matrix from Kalibr) was converted to 3 Euler angles [deg] using [this](https://www.andre-gaschler.com/rotationconverter/) tool. Translation values were taken directly from 4x4 Kalibr matrix. The variable sequence is: transX, transY, transZ, rotZ, rotY, rotX. Depending on the application, translation between RGB and depth sensors (44mm) should be added appropriately.
