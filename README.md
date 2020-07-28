@@ -1,17 +1,23 @@
 # Multiple-Realsense-D435
 
+<p align="center">
+  <img src="setup.jpg" width="700" img align="center">
+</p>
+
 Transform matrixes between main camera link and all other cameras were calculated using [Kalibr](https://github.com/ethz-asl/kalibr/wiki/multiple-camera-calibration) on 1080p RGB video feed. Realsense-ros launch files can be edited to achieve desired resolution parameters. Based on camera setup used, It is neccesary to take into account translation between RGB and depth sensors. Distance between those sensors was measured at 44 milimeters using camera model.
 
 ## Calibration
 
-Calibration was run with:
+Single calibration (one for each transform) was run with:
 ```
 kalibr_calibrate_cameras --models pinhole-equi pinhole-equi --target aprilgrid.yaml --bag M-R.bag --topics /cam_M/color/image_raw /cam_R/color/image_raw
 ```
 
+Additionaly, depth sensors were calibrates using RealSense Viewer. On-Chip and Tare calibrations were performed. To do this, firmware update may be needed.
+
 ## How to
 
-First, we need a way to distinguish between specific D435 cameras. I used serial numbers. They can be found on a sticker at the bottom of the camera or when running roslaunch file. Alternative way to differentiate between cameras is defining serial port numbers. I did not test that solution.
+First, we need a way to distinguish between specific D435 cameras. I used serial numbers. They can be found on a sticker at the bottom of the camera or when running roslaunch file. Alternative way to differentiate between cameras is defining serial port numbers. However, I did not test that solution.
 
 Initiate camera feed:
 ```
