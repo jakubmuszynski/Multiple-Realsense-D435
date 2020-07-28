@@ -15,9 +15,9 @@ First, we need a way to distinguish between specific D435 cameras. I used serial
 
 Initiate camera feed:
 ```
-roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_L serial_no:=947522072464
-roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_M serial_no:=948122072058
-roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_R serial_no:=938422071315
+roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_M serial_no:=947522072464 filters:=pointcloud
+roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_L serial_no:=938422071315 filters:=pointcloud
+roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_R serial_no:=948122072058 filters:=pointcloud
 ```
 
 3x3 rotation matrix (part of 4x4 transform matrix from Kalibr) was converted to 3 Euler angles [deg] using [this](https://www.andre-gaschler.com/rotationconverter/) tool. Translation values were taken directly from 4x4 Kalibr matrix. The variable sequence is: transX, transY, transZ, rotZ, rotY, rotX. Depending on the application, translation between RGB and depth sensors (44mm) should be added appropriately.
