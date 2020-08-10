@@ -24,16 +24,15 @@ First, we need a way to distinguish between specific D435 cameras. I used serial
 
 Run custom python pyrealsense2 script:
 ```
-rosrun triple_pointcloud triple_pointcloud.py --cam_M_id 947522072464 --cam_R_id 948122072058 --cam_L_id 938422071315
+rosrun triple_pointcloud triple_pointcloud.py
 ```
-Camera id numbers can also be entered directly into code as defaults (lines 45-47). Then, rosrun parameters can be ignored in a command above.
+Camera id numbers can be entered directly into code as defaults (lines 45-47) or as rosrun parameters (e.g. --cam_M_id 947522072464).
 
 Alternative camera feed via librealsense:
 ```
-roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_M serial_no:=947522072464 filters:=pointcloud
-roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_L serial_no:=938422071315 filters:=pointcloud
-roslaunch realsense2_camera rs_aligned_depth.launch camera:=cam_R serial_no:=948122072058 filters:=pointcloud
+roslaunch triple_pointcloud rs_aligned_depth_triple.launch
 ```
+Camera id numbers were entered in rs_aligned_depth_triple.launch file.
 
 ### Transforms between cameras
 
@@ -60,8 +59,7 @@ To visualize pointcloud data in rviz, main camera link (in my case cam_M_link) s
 
 Before launching octomap, pointclouds need to be published via a single topic. To do that, run:
 ```
-rosrun topic_tools relay PointCloud_R PointCloud_M
-rosrun topic_tools relay PointCloud_L PointCloud_M
+roslaunch triple_pointcloud join_topics.launch
 ```
 
 Clone [octomap_mapping](https://github.com/OctoMap/octomap_mapping) repository into your workspace, build it using catkin_make and run:
