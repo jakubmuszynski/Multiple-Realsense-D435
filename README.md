@@ -12,6 +12,7 @@ Single calibration (one for each transform) was run with:
 ```
 kalibr_calibrate_cameras --models pinhole-equi pinhole-equi --target aprilgrid.yaml --bag M-R.bag --topics /cam_M/color/image_raw /cam_R/color/image_raw
 ```
+Rosbag data was limited to 5 FPS using [drop tool](http://wiki.ros.org/topic_tools/drop).
 
 Additionaly, depth sensors were calibrates using RealSense Viewer. On-Chip and Tare calibrations were performed. To do this, firmware update may be needed.
 
@@ -63,7 +64,7 @@ rosrun topic_tools relay PointCloud_R PointCloud_M
 rosrun topic_tools relay PointCloud_L PointCloud_M
 ```
 
-Clone [this](https://github.com/OctoMap/octomap_mapping) repository into your workspace, build it using catkin_make and run:
+Clone [octomap_mapping](https://github.com/OctoMap/octomap_mapping) repository into your workspace, build it using catkin_make and run:
 ```
 roslaunch octomap_server octomap_mapping.launch frame_id:=cam_M_link cloud_in:=PointCloud_M
 ```
