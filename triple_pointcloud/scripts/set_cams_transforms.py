@@ -48,7 +48,7 @@ def publish_status(broadcaster, status, from_cam, to_cam):
 
 if __name__ == '__main__':
     
-    file_MR = open('src/realsense_nodes_python/src/transform_M-R.txt', 'r')
+    file_MR = open('src/triple_pointcloud/scripts/transform_M-R.txt', 'r')
     file_MR_list = []
     print
     print 'M-R transform:'
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     file_MR.close()
     x1, y1, z1, yaw1, pitch1, roll1 = [float(arg) for arg in file_MR_list]
 
-    file_ML = open('src/realsense_nodes_python/src/transform_M-L.txt', 'r')
+    file_ML = open('src/triple_pointcloud/scripts/transform_M-L.txt', 'r')
     file_ML_list = []
     print
     print 'M-L transform:'
