@@ -48,7 +48,7 @@ Transforms are loaded from 2 separate .txt files. The variable sequence is: tran
 Alternative camera transforms publish via librealsense below. After publishing first transform, exit the script and run another one.
 ```
 python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_R_link -0.07713135 -0.13010438 -0.01722759 -50.6754716 2.8649545 2.5538075
-python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_L_link -0.07713135 0.13010438 -0.01722759 50.6754716 2.8649545 2.5538075 
+python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_L_link -0.02713135 0.06760438 -0.04535259 50.67547161 0.73995450 -0.44619251 
 ```
 
 ### Rviz
