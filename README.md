@@ -22,13 +22,17 @@ Additionaly, depth sensors were calibrates using RealSense Viewer. On-Chip and T
 
 First, we need a way to distinguish between specific D435 cameras. I used serial numbers. They can be found on a sticker at the bottom of the camera or when running roslaunch file. Alternative way to differentiate between cameras is defining serial port numbers. However, I did not test that solution.
 
-Run custom python pyrealsense2 script:
+#### Filtered pointcloud
+
+For filtered pointcloud, run custom python pyrealsense2 script:
 ```
 rosrun triple_pointcloud triple_pointcloud.py
 ```
 Camera id numbers can be entered directly into code as defaults (lines 45-47) or as rosrun parameters (e.g. --cam_M_id 947522072464).
 
-Alternative camera feed via librealsense:
+#### Colored pointcloud
+
+Launch via librealsense:
 ```
 roslaunch triple_pointcloud rs_aligned_depth_triple.launch
 ```
@@ -45,7 +49,7 @@ python src/triple_pointcloud/scripts/set_cams_transforms.py
 
 Transforms are loaded from 2 separate .txt files. The variable sequence is: transX, transY, transZ, rotZ, rotY, rotX.
 
-Alternative camera transforms publish via librealsense below. After publishing first transform, exit the script and run another one.
+Alternative camera transforms publish via librealsense below. After publishing first transform, exit the script and run another one. You can edit transform values manually using this script.
 ```
 python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_R_link -0.07713135 -0.13010438 -0.01722759 -50.6754716 2.8649545 2.5538075
 python src/realsense-ros/realsense2_camera/scripts/set_cams_transforms.py cam_M_link cam_L_link -0.02713135 0.06760438 -0.04535259 50.67547161 0.73995450 -0.44619251 
@@ -66,6 +70,7 @@ Clone [octomap_mapping](https://github.com/OctoMap/octomap_mapping) repository i
 ```
 roslaunch octomap_server octomap_mapping.launch frame_id:=cam_M_link cloud_in:=PointCloud_M
 ```
+Command above needds to be launched before anything else.
 
 ## Issues
 
